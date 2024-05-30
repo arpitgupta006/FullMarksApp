@@ -1,25 +1,17 @@
 import './App.css';
+import Dashboard from './Dashboard/Dashboard';
 import AddSchool from './Users/School/AddSchool';
-import School from './Users/School/School';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from './Dashboard/Header';
+
+
 
 function App() {
   return (
     <div className="App">
-      
-<<<<<<< HEAD
-      <AddStudent/>
-=======
-      <Router>
-        <Routes>
-
-          <Route path= '/schools' element= {<School/>}></Route>
-          <Route path= '/addschools' element= {<AddSchool/>}></Route>
-
-
-        </Routes>
-      </Router>
->>>>>>> ea0bef0e734f09ba4aee87ef8701e2681835151f
+      <Header/>
+      <Dashboard/>
+      <AddSchool/>
     </div>
   );
 }
