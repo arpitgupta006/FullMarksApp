@@ -13,7 +13,7 @@ import "react-country-state-city/dist/react-country-state-city.css";
 const AddTeacher = () => {
     const [formData, setFormData] = useState({
         company_name: '',
-        teachername: '',
+        teacher_name: '',
         password: '',
         profilepic: null,
         email: '',
@@ -50,7 +50,7 @@ const AddTeacher = () => {
             data.append(key, formData[key]);
         });
 
-        axios.post('http://localhost/fullmarks-server/addschools.php', data)
+        axios.post('http://localhost/fullmarks-server/addteacher.php', data)
             .then(response => {
                 if (response.data.success) {
                     alert('School added successfully');
@@ -88,8 +88,8 @@ const AddTeacher = () => {
                 <Form.Control
                     type="text"
                     placeholder="Teacher Name"
-                    name="teachername"
-                    value={formData.teachername}
+                    name="teacher_name"
+                    value={formData.teacher_name}
                     onChange={handleChange}
                     required
                 />
