@@ -13,6 +13,7 @@ import "react-country-state-city/dist/react-country-state-city.css";
 const AddTeacher = () => {
     const [formData, setFormData] = useState({
         company_name: '',
+        school_name: '',
         teacher_name: '',
         password: '',
         profilepic: null,
@@ -56,7 +57,8 @@ const AddTeacher = () => {
                     alert('School added successfully');
                     setFormData({
                         company_name: '',
-                        teachername: '',
+                        school_name: '',
+                        teacher_name: '',
                         password: '',
                         profilepic: null,
                         email: '',
@@ -75,13 +77,25 @@ const AddTeacher = () => {
     return (
         <div> <Form onSubmit={handleSubmit}>
 
-            <Form.Select aria-label="Default select example">
-                <option>Company Name</option>
+            <Form.Label>Company Name</Form.Label>
+            <Form.Select aria-label="Default select example" name="company_name"
+                    value={formData.company_name}
+                    onChange={handleChange}
+                    required>
+                <Form.Label>Company Name</Form.Label>
                 <option value="Full Marks">Full Marks</option>
                 <option value="Langers">Langers</option>
             </Form.Select>
 
 
+            <Form.Label>School Name</Form.Label>
+            <Form.Select aria-label="Default select example" name="school_name"
+                    value={formData.school_name}
+                    onChange={handleChange}
+                    required>
+                <option value="Jawahar Navodaya Vidyalaya">Jawahar Navodaya Vidyalaya</option>
+                <option value="Fullmarks Pvt Ltd">Fullmarks Pvt Ltd</option>
+            </Form.Select>
 
             <Form.Group className="mb-3" controlId="formSchoolAddress">
                 <Form.Label>Teacher Name</Form.Label>
