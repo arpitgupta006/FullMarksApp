@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Dashboard from '../../Dashboard/Dashboard';
+
+import { useNavigate } from 'react-router-dom';
 import {
     CitySelect,
     CountrySelect,
@@ -19,6 +21,8 @@ import Container from 'react-bootstrap/esm/Container';
 const SchoolList = () => {
     const [countryid, setCountryid] = useState(0);
     const [stateid, setstateid] = useState(0);
+
+    const navigate = useNavigate();
     return (
         <div>
 
@@ -68,7 +72,7 @@ const SchoolList = () => {
                                 </div>
                             </Col>
                             <Col>
-                                <div><Button className="mx-1 my-4 p-3" variant="primary">Add New School</Button>
+                                <div><Button className="mx-1 my-4 p-3" variant="primary" onClick={()=> navigate("/addschools")}>Add New School</Button>
                                 </div>
                             </Col>
                         </Row>
@@ -89,32 +93,30 @@ const SchoolList = () => {
                         </Row>
                         <Table striped bordered hover size="sm">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                            <tr>
+                                    <th>S. no.</th>
+                                    <th>Name</th>
+                                    <th>Email/Phone</th>
+                                    <th>Country/City/State</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td>Ryan International</td>
+                                    <td>ryaninternational@ryan.in</td>
+                                    <td>Vasant Kunj</td>
+                                    <td>India delhi</td>
+                                    <td>Active</td>
+                                    <td>Edit</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td >Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
+                           
+                                </tbody>
+                                
+                           
                         </Table>
                     </Container>
                 </Col>
