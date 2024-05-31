@@ -8,6 +8,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: *");
 header("Access-Control-Allow-Headers: *");
 
+
 $servername = "localhost";
 $username = "mylogin123";
 $password = "localhost";
@@ -19,18 +20,17 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
+$company_name = $_POST['company_name'];
 $school_name = $_POST['school_name'];
-$school_address = $_POST['school_address'];
+$teacher_name = $_POST['teacher_name'];
 $password = $_POST['password'];
-$logo = $_FILES['logo']['name'];
 $email = $_POST['email'];
 $contact_no = $_POST['contact_no'];
 $country = $_POST['country'];
 $state = $_POST['state'];
 $city = $_POST['city'];
+$zipcode = $_POST['zipcode'];
 
-// Generate slug from school name
-$slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $school_name)));
 
 // Upload logo file
 $target_dir = "uploads/";
@@ -44,8 +44,8 @@ $contact_info = "Email: $email, Contact No: $contact_no";
 $location_info = "Country: $country, State: $state, City: $city";
 
 // Prepare and bind
-$stmt = $conn->prepare("INSERT INTO schools (school_name, school_address, password, logo, contact_info, location_info, slug) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $school_name, $school_address, $password, $target_file, $contact_info, $location_info, $slug);
+$stmt = $conn->prepare("INSERT INTO teachers (company_name, teacher_name, school_name, password, logo, contact_info, location_info, zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $company_name, $teacher_name, $school_name, $password, $target_file, $contact_info, $location_info, $zipcode);
 
 // Execute the statement
 if ($stmt->execute()) {
