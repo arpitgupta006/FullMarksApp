@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: *");
-header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 
 $servername = "localhost";
 $username = "mylogin123";
@@ -19,21 +19,28 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
 
-$data = json_decode(file_get_contents("php://input"));
-$sno = $data->sno;
-$is_enabled = $data->is_enabled;
+error_log("Received data: " . print_r($data, true));
 
-$sql = "UPDATE schools SET is_enabled = ? WHERE sno = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $is_enabled, $sno);
+if (isset($data['slug']) && isset($data['is_enabled'])) {
+    $school_slug = $data['slug'];
+    $is_enabled = $data['is_enabled'];
 
-if ($stmt->execute()) {
-    echo json_encode(["message" => "User status updated successfully"]);
+    $stmt = $conn->prepare("UPDATE schools SET is_enabled = ? WHERE slug = ?");
+    $stmt->bind_param("is", $is_enabled, $school_slug);
+
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true]);
+    } else {
+        echo json_encode(["success" => false, "message" => $stmt->error]);
+    }
+
+    $stmt->close();
 } else {
-    echo json_encode(["message" => "Error updating user status"]);
+    echo json_encode(["success" => false, "message" => "Required data is missing"]);
 }
 
-$stmt->close();
 $conn->close();
 ?>

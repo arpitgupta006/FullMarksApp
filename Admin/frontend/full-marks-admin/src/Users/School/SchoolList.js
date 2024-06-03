@@ -17,11 +17,14 @@ import {
 } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 
+
 const SchoolList = () => {
     const [countryid, setCountryid] = useState(0);
     const [stateid, setstateid] = useState(0);
     const [schools, setSchools] = useState([]);
     const navigate = useNavigate();
+    const [isUserEnabled, setIsUserEnabled] = useState(true);
+
 
     useEffect(() => {
         axios.get('http://localhost/fullmarks-server/schools.php')
@@ -34,6 +37,19 @@ const SchoolList = () => {
             })
             .catch(error => console.error('Error fetching schools:', error));
     }, []);
+
+    const handleToggleEnableClick = () => {
+        const newStatus = !isUserEnabled;
+        axios.put(`http://localhost/admin-api/toggle-user-status.php`)
+          .then(response => {
+            console.log(response.data);
+            setIsUserEnabled(newStatus);
+          })
+          .catch(error => {
+            console.error('Error toggling user status:', error);
+          });
+      };
+    
 
     return (
         <div>
@@ -119,7 +135,7 @@ const SchoolList = () => {
                                         <td>{school.contact_info}</td>
                                         <td>{school.location_info}</td>
                                         <td>{school.school_address}</td>
-                                        <td>{school.status}</td>
+                                        <td><button onClick={handleToggleEnableClick} id='usd-toggle-enable-btn'>{isUserEnabled ? 'Disable User' : 'Enable User'}</button> </td>
                                         <td><Button variant="primary" onClick={() => navigate(`/edit-school/${school.id}`)}>Edit</Button></td>
                                     </tr>
                                 ))}

@@ -19,18 +19,17 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
-$sql = "SELECT sno, school_name, contact_info, location_info, school_address FROM schools";
+$sql = "SELECT class_name, class_id FROM class";
 $result = $conn->query($sql);
 
-$schools = [];
+$classes = [];
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $schools[] = $row;
+    while($row = $result->fetch_assoc()) {
+        $classes[] = $row;
     }
-    echo json_encode(["success" => true, "schools" => $schools]);
-} else {
-    echo json_encode(["success" => false, "message" => "No schools found"]);
 }
+
+echo json_encode(['success' => true, 'classes' => $classes]);
 
 $conn->close();
 ?>

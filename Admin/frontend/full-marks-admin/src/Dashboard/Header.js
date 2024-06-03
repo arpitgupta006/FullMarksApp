@@ -1,23 +1,23 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+// Navbar.js
+import React from 'react';
 
-function Header() {
+const Header = () => {
   return (
-    <div> <Navbar className="bg-body-tertiary">
-    <Container>
-      <Navbar.Brand href="#home">
-        <img
-          src="/src/logo.svg"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          alt="React Bootstrap logo"
-        />
-      </Navbar.Brand>
-    </Container>
-  </Navbar></div>
-  )
-}
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#F44336' }}>
+      <a className="navbar-brand text-white" href="#">
+        Company Name
+      </a>
+      <div className="collapse navbar-collapse">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <a className="nav-link text-white" href="#">
+              <i className="material-icons">notifications</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
-export default Header
+export default Header;
