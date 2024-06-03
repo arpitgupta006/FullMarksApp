@@ -40,7 +40,7 @@ const Dashboard= ()=> {
           <SubMenu label="Users">
             <MenuItem onClick={()=>navigate('/schoollist')}> School </MenuItem>
             <MenuItem onClick={()=>navigate('/teacherlist')}> Teachers </MenuItem>
-            <MenuItem> Students </MenuItem>
+            <MenuItem onClick={()=>navigate('/studentlist')}> Students </MenuItem>
             <MenuItem> Reports </MenuItem>
           </SubMenu>
         </Menu>

@@ -73,7 +73,7 @@ function TeacherList() {
                                 </div>
                             </Col>
                             <Col>
-                                <div><Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={()=> navigate("/addschools")}>Add New School</Button>
+                                <div><Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={()=> navigate("/addteachers")}>Add New Teacher</Button>
                                 </div>
                             </Col>
                         </Row>
