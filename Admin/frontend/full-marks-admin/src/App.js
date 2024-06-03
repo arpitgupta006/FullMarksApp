@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from './Dashboard/Header';
 import SchoolList from './Users/School/SchoolList';
-
-
+import StudentList from './Users/Students/StudentList';
+import TeacherList from './Users/Teachers/TeacherList';
 import AddTeacher from './Users/Teachers/AddTeacher';
 import AddStudent from './Users/Students/AddStudent';
 import Classes from './Masterfilters/Classes/Classes';

@@ -1,7 +1,10 @@
 import React from 'react'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { useNavigate } from 'react-router-dom';
+
 
 const Dashboard= ()=> {
+  const navigate = useNavigate();
   return (
     <div>
       
@@ -35,8 +38,8 @@ const Dashboard= ()=> {
             <MenuItem> Test Papers </MenuItem>
           </SubMenu>
           <SubMenu label="Users">
-            <MenuItem> School </MenuItem>
-            <MenuItem> Teachers </MenuItem>
+            <MenuItem onClick={()=>navigate('/schoollist')}> School </MenuItem>
+            <MenuItem onClick={()=>navigate('/teacherlist')}> Teachers </MenuItem>
             <MenuItem> Students </MenuItem>
             <MenuItem> Reports </MenuItem>
           </SubMenu>

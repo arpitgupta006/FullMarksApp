@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,62 +6,36 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
 import Dashboard from '../../Dashboard/Dashboard';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 import {
     CitySelect,
     CountrySelect,
     StateSelect,
 } from "react-country-state-city";
+
 import "react-country-state-city/dist/react-country-state-city.css";
+import Container from 'react-bootstrap/esm/Container';
 
+function TeacherList() {
 
-const SchoolList = () => {
     const [countryid, setCountryid] = useState(0);
     const [stateid, setstateid] = useState(0);
-    const [schools, setSchools] = useState([]);
+
     const navigate = useNavigate();
-    const [isUserEnabled, setIsUserEnabled] = useState(true);
-
-
-    useEffect(() => {
-        axios.get('http://localhost/fullmarks-server/schools.php')
-            .then(response => {
-                if (response.data.success) {
-                    setSchools(response.data.schools);
-                } else {
-                    alert('Error fetching schools');
-                }
-            })
-            .catch(error => console.error('Error fetching schools:', error));
-    }, []);
-
-    const handleToggleEnableClick = () => {
-        const newStatus = !isUserEnabled;
-        axios.put(`http://localhost/admin-api/toggle-user-status.php`)
-          .then(response => {
-            console.log(response.data);
-            setIsUserEnabled(newStatus);
-          })
-          .catch(error => {
-            console.error('Error toggling user status:', error);
-          });
-      };
-    
-
-    return (
-        <div>
-            <Row>
+  return (
+    <div>
+        
+        <Row>
                 <Col lg="2">
-                    <Dashboard />
+                   <Dashboard/>
                 </Col>
                 <Col lg="10">
-                    <Container>
+                <Container>
                         <Row>
-                            <Col>
-                                <Card className="mx-1 my-4">
+                            <Col >
+                                <Card className="mx-1 my-4 " >
                                     <Card.Body>
                                         <Card.Title>Country</Card.Title>
                                         <Card.Text>
@@ -75,8 +49,9 @@ const SchoolList = () => {
                                     </Card.Body>
                                 </Card>
                             </Col>
+
                             <Col>
-                                <Card className="mx-1 my-4">
+                                <Card className="mx-1 my-4" >
                                     <Card.Body>
                                         <Card.Title>State</Card.Title>
                                         <Card.Text>
@@ -91,61 +66,65 @@ const SchoolList = () => {
                                     </Card.Body>
                                 </Card>
                             </Col>
+
                             <Col>
                                 <div>
                                     <Button className="mx-1 my-4 p-3" variant="outline-success">Search</Button>
                                 </div>
                             </Col>
                             <Col>
-                                <div>
-                                    <Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={() => navigate("/addschools")}>Add New School</Button>
+                                <div><Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={()=> navigate("/addschools")}>Add New School</Button>
                                 </div>
                             </Col>
                         </Row>
-                        <hr />
+
+                        <hr></hr>
                         <Row>
-                            <Col>
-                                <Button variant="outline-info">Copy</Button>
-                                <Button variant="outline-info">CSV</Button>
-                                <Button variant="outline-info">Excel</Button>
-                                <Button variant="outline-info">PDF</Button>
-                                <Button variant="outline-info">Print</Button>
+                            <Col className='display-flex'>
+                                <Form.Control type="text" placeholder="Search" />
+                                </Col>
+                                <Col>
+                                <Button variant="outline-info">Search</Button>
                             </Col>
                             <Col>
-                                <Form.Control type="text" placeholder="Search" />
+                            <Button variant="outline-warning">Export</Button>
                             </Col>
                         </Row>
                         <Table striped bordered hover size="sm">
                             <thead>
-                                <tr>
+                            <tr>
                                     <th>S. no.</th>
-                                    <th>Name</th>
+                                    <th>Teacher Name</th>
+                                    <th>School Name</th>
                                     <th>Email/Phone</th>
                                     <th>Country/City/State</th>
-                                    <th>Address</th>
+                                    <th>Assigned Books</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {schools.map((school, index) => (
-                                    <tr key={school.sno}>
-                                        <td>{index + 1}</td>
-                                        <td>{school.school_name}</td>
-                                        <td>{school.contact_info}</td>
-                                        <td>{school.location_info}</td>
-                                        <td>{school.school_address}</td>
-                                        <td><button onClick={handleToggleEnableClick} id='usd-toggle-enable-btn'>{isUserEnabled ? 'Disable User' : 'Enable User'}</button> </td>
-                                        <td><Button variant="primary" onClick={() => navigate(`/edit-school/${school.id}`)}>Edit</Button></td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ms Aditi</td>
+                                    <td>Ryan International</td>
+                                    <td>ryaninternational@ryan.in</td>
+                                    <td>India delhi</td>
+                                    <td>2</td>
+                                    <td>Active</td>
+                                    <td>Edit</td>
+                                </tr>
+                           
+                                </tbody>
+                                
+                           
                         </Table>
                     </Container>
                 </Col>
             </Row>
-        </div>
-    )
+
+    </div>
+  )
 }
 
-export default SchoolList;
+export default TeacherList
