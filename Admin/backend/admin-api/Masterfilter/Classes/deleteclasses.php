@@ -19,18 +19,20 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
-$sql = "SELECT sno, school_name, contact_info, location_info, school_address FROM schools";
-$result = $conn->query($sql);
+// Get the POST data
+$data = json_decode(file_get_contents('php://input'), true);
+$classId = $data['class_id'];
 
-$schools = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $schools[] = $row;
-    }
-    echo json_encode(["success" => true, "schools" => $schools]);
+$sql = "DELETE FROM class WHERE class_id=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $classId);
+
+if ($stmt->execute()) {
+    echo json_encode(['success' => true, 'message' => 'Class deleted successfully']);
 } else {
-    echo json_encode(["success" => false, "message" => "No schools found"]);
+    echo json_encode(['success' => false, 'message' => 'Error deleting class']);
 }
 
+$stmt->close();
 $conn->close();
 ?>

@@ -9,24 +9,28 @@ import SchoolList from './Users/School/SchoolList';
 
 import AddTeacher from './Users/Teachers/AddTeacher';
 import AddStudent from './Users/Students/AddStudent';
-
+import Classes from './Masterfilters/Classes/Classes';
+import Addclasses from './Masterfilters/Classes/Addclasses';
+import Sidebar from './Dashboard/Sidebar';
+import Updateclasses from './Masterfilters/Classes/Updateclasses';
 
 
 
 function App() {
   return (
-    <div>
+    <div >
       <Header/>
       <Router>
+        
         <Routes>
       
           <Route path= '/addschools' element= {<AddSchool/>}></Route>
           <Route path= '/addteachers' element= {<AddTeacher/>}></Route>
           <Route path= '/addstudents' element= {<AddStudent/>}></Route>
           <Route path= '/schoollist' element= {<SchoolList/>}></Route>
-
-
-
+          <Route path = '/addclasses' element = {<Addclasses/>}></Route>
+          <Route path= '/classes' element = {<Classes/>}></Route>
+          <Route path= '/updateclass/:id' element = {<Updateclasses/>}></Route>
 
 
 
