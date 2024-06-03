@@ -39,15 +39,15 @@ const Sidebar = () => {
           </div>
           {isMasterFilterOpen && (
             <ul className="list-unstyled pl-3 mt-2">
-              <Link to = "/classe" ><li className='px-3 mt-2 submenu-item'>Classes</li></Link>
-              <li className='px-3 mt-2 submenu-item'>Subjects</li>
-              <li className='px-3 mt-2 submenu-item'>Series</li>
-              <li className='px-3 mt-2 submenu-item'>Books</li>
-              <li className='px-3 mt-2 submenu-item'>Sections</li>
-              <li className='px-3 mt-2 submenu-item'>Units</li>
-              <li className='px-3 mt-2 submenu-item'>Chapters</li>
-              <li className='px-3 mt-2 submenu-item'>Topics</li>
-              <li className='px-3 mt-2 submenu-item'>Sub Topics</li>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Classes</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Subjects</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Series</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Books</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Sections</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Units</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Chapters</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Topics</li></Link>
+              <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Sub Topics</li></Link>
             </ul>
           )}
         </li>
@@ -70,10 +70,10 @@ const Sidebar = () => {
           </div>
           {isUsersOpen && (
             <ul className="list-unstyled pl-3 mt-2">
-              <li className='px-3 mt-2 submenu-item'>School</li>
-              <li className='px-3 mt-2 submenu-item'>Teacher</li>
-              <li className='px-3 mt-2 submenu-item'>Student</li>
-              <li className='px-3 mt-2 submenu-item'>Report</li>
+               <Link to = "/schoollist" ><li className='px-3 mt-2 submenu-item'>School</li></Link>
+               <Link to = "/teacherlist" ><li className='px-3 mt-2 submenu-item'>Teacher</li></Link>
+               <Link to = "/studentlist" ><li className='px-3 mt-2 submenu-item'>Student</li></Link>
+               <Link to = "/classes" ><li className='px-3 mt-2 submenu-item'>Report</li></Link>
             </ul>
           )}
         </li>

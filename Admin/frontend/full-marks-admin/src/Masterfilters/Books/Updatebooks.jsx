@@ -3,21 +3,21 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../../Dashboard/Sidebar';
 import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 
-const Updateclass = () => {
+const Updatebooks = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [classData, setClassData] = useState({ className: '', sortOrder: '' });
+  const [bookData, setBookData] = useState({ bookName: '', sortOrder: '' });
 
   useEffect(() => {
-    fetchClassData();
+    fetchBookData();
   }, [id]);
 
-  const fetchClassData = async () => {
+  const fetchBookData = async () => {
     try {
       const response = await fetch(`http://localhost/fullmarks-server/Masterfilter/Classes/getClass.php?class_id=${id}`);
       const data = await response.json();
       if (data.success) {
-        setClassData({ className: data.class.class_name, sortOrder: data.class.sort_order });
+        setBookData({ bookName: data.class.class_name, sortOrder: data.class.sort_order });
       } else {
         alert('Failed to fetch class data');
       }
@@ -29,7 +29,7 @@ const Updateclass = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setClassData((prevState) => ({
+    setBookData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -68,24 +68,24 @@ const Updateclass = () => {
           <div className="col-md-9">
             <div className="container mt-3">
               {/* Topbar */}
-              <h5 className='text-grey my-3'>Update Class</h5>
+              <h5 className='text-grey my-3'>Update Book</h5>
               <div className="row"></div>
     <div className="container mt-3 bg-white shadow-lg p-3 mb-5 bg-white rounded">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="className" className= 'mb-2'><b>Class</b></label>
+          <label htmlFor="className" className= 'mb-2'><b>Book</b></label>
           <input
             type="text"
             className="form-control"
             id="className"
             name="className"
-            value={classData.className}
+            value={bookData.bookName}
             onChange={handleChange}
             required
           />
         </div>
         <br></br>
-        <button type="submit" className="btn btn-primary d-flex">Update Class</button>
+        <button type="submit" className="btn btn-primary d-flex">Update Book</button>
       </form>
     </div>
     </div>
@@ -96,4 +96,4 @@ const Updateclass = () => {
   );
 };
 
-export default Updateclass;
+export default Updatebooks;

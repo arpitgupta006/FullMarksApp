@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import Dashboard from '../../Dashboard/Dashboard';
+import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -17,6 +17,7 @@ import {
     CountrySelect,
     StateSelect,
 } from "react-country-state-city";
+
 import "react-country-state-city/dist/react-country-state-city.css";
 
 const StudentList = () => {
@@ -25,13 +26,13 @@ const StudentList = () => {
     const [classVal, setclassVal] = useState("");
     const [schools, setSchools] = useState([]);
     const navigate = useNavigate();
-
+    const [date, setDate] = useState(new Date());
 
     return (
         <div>
             <Row>
                 <Col lg="2">
-                    <Dashboard />
+                    <SidebarDefunct />
                 </Col>
                 <Col lg="10">
                     <Container>
@@ -75,11 +76,20 @@ const StudentList = () => {
                                         <Card.Body>
                                             <Card.Title>School</Card.Title>
                                             <Card.Text>
-                                                <DropdownButton id="dropdown-basic-button" title="School">
-                                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                                </DropdownButton>
+                                                <Form>
+                                                    <Form.Group className="mb-3" controlId="formClass">
+                                                        <Form.Select
+                                                            aria-label="Default select example"
+                                                            name="class" required
+                                                        >
+                                                            <option value="">Select School</option>
+                                                            <option value="1st Class">1st Class</option>
+                                                            <option value="2nd Class">2nd Class</option>
+                                                            <option value="3rd Class">3rd Class</option>
+                                                            <option value="4th Class">4th Class</option>
+                                                        </Form.Select>
+                                                    </Form.Group>
+                                                </Form>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
@@ -93,33 +103,33 @@ const StudentList = () => {
                                             <Card.Title>Classes</Card.Title>
                                             <Card.Text>
                                                 <Form>
-                                                <Form.Group className="mb-3" controlId="formClass">
-                                <Form.Select
-                                    aria-label="Default select example"
-                                    name="class"                                    required
-                                >
-                                    <option value="">Select Class</option>
-                                    <option value="1st Class">1st Class</option>
-                                    <option value="2nd Class">2nd Class</option>
-                                    <option value="3rd Class">3rd Class</option>
-                                    <option value="4th Class">4th Class</option>
-                                    <option value="5th Class">5th Class</option>
-                                    <option value="6th Class">6th Class</option>
-                                    <option value="7th Class">7th Class</option>
-                                    <option value="8th Class">8th Class</option>
-                                    <option value="9th Class">9th Class</option>
-                                    <option value="10th Class">10th Class</option>
-                                    <option value="11th Class">11th Class</option>
-                                    <option value="12th Class">12th Class</option>
-                                    <option value="Pre-Primary">Pre-Primary</option>
-                                    <option value="Praveshika/0 part">Praveshika/0 part</option>
-                                    <option value="Beginner">Beginner</option>
-                                    <option value="NA">NA</option>
-                                    <option value="9-10th">9-10th</option>
-                                    <option value="11-12th">11th-12th</option>
-                                    <option value="Primary">Primary</option>
-                                </Form.Select>
-                            </Form.Group>
+                                                    <Form.Group className="mb-3" controlId="formClass">
+                                                        <Form.Select
+                                                            aria-label="Default select example"
+                                                            name="class" required
+                                                        >
+                                                            <option value="">Select Class</option>
+                                                            <option value="1st Class">1st Class</option>
+                                                            <option value="2nd Class">2nd Class</option>
+                                                            <option value="3rd Class">3rd Class</option>
+                                                            <option value="4th Class">4th Class</option>
+                                                            <option value="5th Class">5th Class</option>
+                                                            <option value="6th Class">6th Class</option>
+                                                            <option value="7th Class">7th Class</option>
+                                                            <option value="8th Class">8th Class</option>
+                                                            <option value="9th Class">9th Class</option>
+                                                            <option value="10th Class">10th Class</option>
+                                                            <option value="11th Class">11th Class</option>
+                                                            <option value="12th Class">12th Class</option>
+                                                            <option value="Pre-Primary">Pre-Primary</option>
+                                                            <option value="Praveshika/0 part">Praveshika/0 part</option>
+                                                            <option value="Beginner">Beginner</option>
+                                                            <option value="NA">NA</option>
+                                                            <option value="9-10th">9-10th</option>
+                                                            <option value="11-12th">11th-12th</option>
+                                                            <option value="Primary">Primary</option>
+                                                        </Form.Select>
+                                                    </Form.Group>
                                                 </Form>
                                             </Card.Text>
                                         </Card.Body>
@@ -128,23 +138,51 @@ const StudentList = () => {
                             </Col>
 
                             <Col>
-                                <div><Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={() => navigate("/addstudents")}>Add New Students</Button>
+                                <div><Button className="mx-1 my-4 p-3" variant="primary" onClick={() => navigate("/addstudents")}>Add New Students</Button>
                                 </div>
                             </Col>
                         </Row>
 
-                        <hr></hr>
                         <Row>
-                            <Col className='display-flex'>
-                                <Form.Control type="text" placeholder="Search" />
-                            </Col>
                             <Col>
-                                <Button variant="outline-info">Search</Button>
+                                <Form.Group controlId="duedate">
+                                    <Form.Control
+                                        type="date"
+                                        name="duedate"
+                                        placeholder="Due date"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
+                                    />
+                                </Form.Group>
                             </Col>
+                           
                             <Col>
-                                <Button variant="outline-warning">Export</Button>
+                            <Form.Group controlId="duedate">
+                                    <Form.Control
+                                        type="date"
+                                        name="duedate"
+                                        placeholder="Due date"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
+                                    />
+                                </Form.Group>
+                            </Col>
+                           
+                            <Col>
+                            <Form.Control type="text" placeholder="Search" />
+                            
+                            </Col>
+
+                            <Col>
+                            <Button variant="info">Search</Button>
+                            </Col>
+
+                            <Col>
+                                <Button variant="warning">Export</Button>
                             </Col>
                         </Row>
+                        <hr></hr>
+                      
                         <Table striped bordered hover size="sm">
                             <thead>
                                 <tr>

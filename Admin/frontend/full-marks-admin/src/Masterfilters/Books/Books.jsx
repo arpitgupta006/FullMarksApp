@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../../Dashboard/Sidebar';
 import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 
-const Classes = () => {
-  const [classes, setClasses] = useState([]);
+const Books = () => {
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetchClasses();
+    fetchBooks();
   }, []);
 
-  const fetchClasses = async () => {
+  const fetchBooks = async () => {
     try {
       const response = await fetch('http://localhost/fullmarks-server/Masterfilter/Classes/fetchclasses.php');
       const data = await response.json();
       if (data.success) {
-        setClasses(data.classes);
+        setBooks(data.classes);
       } else {
         alert('Failed to fetch classes');
       }
@@ -37,7 +37,7 @@ const Classes = () => {
       const data = await response.json();
       if (data.success) {
         alert('Class deleted successfully');
-        fetchClasses(); // Refresh the classes list
+        fetchBooks(); // Refresh the classes list
       } else {
         alert('Failed to delete class');
       }
@@ -59,10 +59,10 @@ const Classes = () => {
           <div className="col-md-10">
             <div className="container mt-3 bg-white shadow-lg p-3 mb-5 bg-white rounded">
               {/* Topbar */}
-              <h5 className='text-grey my-3'>Classes</h5>
+              <h5 className='text-grey my-3'>Books</h5>
               <div className="row">
                 <div className="col-md-6">
-                  <Link to={'/addclasses'}><button className="btn btn-primary">Add Classes</button></Link>
+                  <Link to={'/addbooks'}><button className="btn btn-primary">Add Books</button></Link>
                 </div>
               </div>
               <hr></hr>
@@ -73,13 +73,15 @@ const Classes = () => {
                     <thead>
                       <tr>
                         <th scope="col">SNo</th>
-                        <th scope="col">Classes</th>
-                        <th scope="col">Sort Order</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">Book</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {classes.map((cls, index) => (
+                      {books.map((cls, index) => (
                         <tr key={cls.class_id}>
                           <td>{index + 1}</td>
                           <td>{cls.class_name}</td>
@@ -111,4 +113,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default Books;

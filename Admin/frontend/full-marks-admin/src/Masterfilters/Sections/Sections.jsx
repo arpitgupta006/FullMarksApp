@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../../Dashboard/Sidebar';
 import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 
-const Classes = () => {
-  const [classes, setClasses] = useState([]);
+const Sections = () => {
+  const [sections, setSections] = useState([]);
 
   useEffect(() => {
-    fetchClasses();
+    fetchSections();
   }, []);
 
-  const fetchClasses = async () => {
+  const fetchSections = async () => {
     try {
       const response = await fetch('http://localhost/fullmarks-server/Masterfilter/Classes/fetchclasses.php');
       const data = await response.json();
       if (data.success) {
-        setClasses(data.classes);
+        setSections(data.classes);
       } else {
         alert('Failed to fetch classes');
       }
@@ -37,7 +37,7 @@ const Classes = () => {
       const data = await response.json();
       if (data.success) {
         alert('Class deleted successfully');
-        fetchClasses(); // Refresh the classes list
+        fetchSections(); // Refresh the classes list
       } else {
         alert('Failed to delete class');
       }
@@ -59,10 +59,10 @@ const Classes = () => {
           <div className="col-md-10">
             <div className="container mt-3 bg-white shadow-lg p-3 mb-5 bg-white rounded">
               {/* Topbar */}
-              <h5 className='text-grey my-3'>Classes</h5>
+              <h5 className='text-grey my-3'>Sections</h5>
               <div className="row">
                 <div className="col-md-6">
-                  <Link to={'/addclasses'}><button className="btn btn-primary">Add Classes</button></Link>
+                  <Link to={'/addsections'}><button className="btn btn-primary">Add Sections</button></Link>
                 </div>
               </div>
               <hr></hr>
@@ -72,20 +72,23 @@ const Classes = () => {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">SNo</th>
-                        <th scope="col">Classes</th>
-                        <th scope="col">Sort Order</th>
+                      <th scope="col">SNo</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">Book</th>
+                        <th scope="col">Section</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {classes.map((cls, index) => (
+                      {sections.map((cls, index) => (
                         <tr key={cls.class_id}>
                           <td>{index + 1}</td>
                           <td>{cls.class_name}</td>
                           <td>{cls.class_id}</td>
                           <td>
-                            <Link to={`/updateclass/${cls.class_id}`}>
+                            <Link to={`/updatesections/${cls.class_id}`}>
                               <button className="btn btn-sm btn-info mr-2">
                                 Edit
                               </button>
@@ -111,4 +114,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default Sections;

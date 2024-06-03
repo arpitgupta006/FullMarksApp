@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Dashboard from '../../Dashboard/Dashboard';
+import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 import Container from 'react-bootstrap/esm/Container';
 import {
     CitySelect,
@@ -96,7 +96,7 @@ const AddStudent = () => {
         <div>
             <Row>
                 <Col lg="2">
-                    <Dashboard />
+                    <SidebarDefunct />
                 </Col>
                 <Col lg="10">
                     <Container>

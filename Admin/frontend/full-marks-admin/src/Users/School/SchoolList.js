@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import Dashboard from '../../Dashboard/Dashboard';
+import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -55,7 +55,7 @@ const SchoolList = () => {
         <div>
             <Row>
                 <Col lg="2">
-                    <Dashboard />
+                    <SidebarDefunct />
                 </Col>
                 <Col lg="10">
                     <Container>
@@ -93,23 +93,23 @@ const SchoolList = () => {
                             </Col>
                             <Col>
                                 <div>
-                                    <Button className="mx-1 my-4 p-3" variant="outline-success">Search</Button>
+                                    <Button className="mx-1 my-4 p-3" variant="success">Search</Button>
                                 </div>
                             </Col>
                             <Col>
                                 <div>
-                                    <Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={() => navigate("/addschools")}>Add New School</Button>
+                                    <Button className="mx-1 my-4 p-3" variant="primary" onClick={() => navigate("/addschools")}>Add New School</Button>
                                 </div>
                             </Col>
                         </Row>
                         <hr />
                         <Row>
                             <Col>
-                                <Button variant="outline-info">Copy</Button>
-                                <Button variant="outline-info">CSV</Button>
-                                <Button variant="outline-info">Excel</Button>
-                                <Button variant="outline-info">PDF</Button>
-                                <Button variant="outline-info">Print</Button>
+                                <Button variant="info">Copy</Button>
+                                <Button variant="info">CSV</Button>
+                                <Button variant="info">Excel</Button>
+                                <Button variant="info">PDF</Button>
+                                <Button variant="info">Print</Button>
                             </Col>
                             <Col>
                                 <Form.Control type="text" placeholder="Search" />

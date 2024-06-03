@@ -3,9 +3,9 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#F44336' }}>
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7375de' }}>
       <a className="navbar-brand text-white" href="#">
-        Company Name
+        Binary Education
       </a>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav ml-auto">

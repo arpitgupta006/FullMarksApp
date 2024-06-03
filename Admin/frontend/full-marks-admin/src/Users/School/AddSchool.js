@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/esm/Container';
-import Dashboard from '../../Dashboard/Dashboard';
+import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 import { useNavigate } from 'react-router-dom';
 import {
     CitySelect,
@@ -83,7 +83,7 @@ const AddSchool = () => {
         <div>
             <Row>
                 <Col lg="2">
-                    <Dashboard />
+                    <SidebarDefunct />
                 </Col>
                 <Col lg="10">
                     <Container>

@@ -3,7 +3,7 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { useNavigate } from 'react-router-dom';
 
 
-const Dashboard= ()=> {
+const SidebarDefunct= ()=> {
   const navigate = useNavigate();
   return (
     <div>
@@ -13,19 +13,19 @@ const Dashboard= ()=> {
         <i class="fa-solid fa-user"></i>
         <p>User@gmail.in</p>
         </div>
-        <p>Main Navigation</p>
+        <h7 className="justify-content-center">Main Navigation</h7>
         <Menu>
           <MenuItem> Dashboard </MenuItem>
 
           <SubMenu label="  Master Filters"> 
-            <MenuItem>  Classes </MenuItem>
-            <MenuItem> Subjects </MenuItem>
-            <MenuItem> Series </MenuItem>
-            <MenuItem> Books </MenuItem>
-            <MenuItem> Sections </MenuItem>
-            <MenuItem> Units </MenuItem>
-            <MenuItem> Chapters </MenuItem>
-            <MenuItem>Topics </MenuItem>
+            <MenuItem onClick={()=>navigate('/classes')}>  Classes </MenuItem>
+            <MenuItem onClick={()=>navigate('/subjects')}> Subjects </MenuItem>
+            <MenuItem onClick={()=>navigate('/series')}> Series </MenuItem>
+            <MenuItem onClick={()=>navigate('/books')}> Books </MenuItem>
+            <MenuItem onClick={()=>navigate('/sections')}> Sections </MenuItem>
+            <MenuItem onClick={()=>navigate('/units')}> Units </MenuItem>
+            <MenuItem onClick={()=>navigate('/chapters')}> Chapters </MenuItem>
+            <MenuItem onClick={()=>navigate('/topics')}>Topics </MenuItem>
           </SubMenu>
         </Menu>
         <Menu>
@@ -49,4 +49,4 @@ const Dashboard= ()=> {
   )
 }
 
-export default Dashboard
+export default SidebarDefunct

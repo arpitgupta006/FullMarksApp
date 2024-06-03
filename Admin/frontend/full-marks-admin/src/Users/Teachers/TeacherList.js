@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-import Dashboard from '../../Dashboard/Dashboard';
+import SidebarDefunct from '../../Dashboard/SidebarDefunct';
 
 import { useNavigate } from 'react-router-dom';
 import {
@@ -29,7 +29,7 @@ function TeacherList() {
         
         <Row>
                 <Col lg="2">
-                   <Dashboard/>
+                   <SidebarDefunct/>
                 </Col>
                 <Col lg="10">
                 <Container>
@@ -69,11 +69,11 @@ function TeacherList() {
 
                             <Col>
                                 <div>
-                                    <Button className="mx-1 my-4 p-3" variant="outline-success">Search</Button>
+                                    <Button className="mx-1 my-4 p-3" variant="success">Search</Button>
                                 </div>
                             </Col>
                             <Col>
-                                <div><Button className="mx-1 my-4 p-3" variant="outline-primary" onClick={()=> navigate("/addteachers")}>Add New Teacher</Button>
+                                <div><Button className="mx-1 my-4 p-3" variant="primary" onClick={()=> navigate("/addteachers")}>Add New Teacher</Button>
                                 </div>
                             </Col>
                         </Row>
@@ -84,10 +84,10 @@ function TeacherList() {
                                 <Form.Control type="text" placeholder="Search" />
                                 </Col>
                                 <Col>
-                                <Button variant="outline-info">Search</Button>
+                                <Button variant="info">Search</Button>
                             </Col>
                             <Col>
-                            <Button variant="outline-warning">Export</Button>
+                            <Button variant="warning">Export</Button>
                             </Col>
                         </Row>
                         <Table striped bordered hover size="sm">
